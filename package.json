@@ -4,8 +4,8 @@
   "description": "SQLite3 session store for express-session",
   "main": "lib/express-sqlite3",
   "scripts": {
-    "lint": "eslint --ignore-path .gitignore lib/**",
-    "lint:fix": "eslint --fix --ignore-path .gitignore lib/**",
+    "lint": "eslint --ignore-path .gitignore lib/** tests/**.js",
+    "lint:fix": "eslint --fix --ignore-path .gitignore lib/** tests/**.js",
     "test": "jest",
     "test:coverage": "jest --coverage"
   },
@@ -30,6 +30,7 @@
     "eslint": "^7.30.0",
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-plugin-import": "^2.23.4",
+    "express-session": "^1.17.2",
     "jest": "^27.0.6"
   },
   "eslintConfig": {
@@ -59,6 +60,7 @@
     "coverageDirectory": "./coverage"
   },
   "dependencies": {
-    "sqlite3": "^5.0.2"
+    "sqlite3": "^5.0.2",
+    "tm-is": "^0.0.3"
   }
 }
