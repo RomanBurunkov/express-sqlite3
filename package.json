@@ -57,7 +57,8 @@
       "json"
     ],
     "testRegex": ".spec.js$",
-    "coverageDirectory": "./coverage"
+    "coverageDirectory": "./coverage",
+    "collectCoverageFrom": ["./lib/*.js"]
   },
   "dependencies": {
     "sqlite3": "^5.0.2",
