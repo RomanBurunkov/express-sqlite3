@@ -14,12 +14,30 @@ beforeAll(() => insertMock(store.getStoreDb()));
 describe('Test SQLite3Store class', () => {
   describe('Check required methods exsistance.', () => {
     const methods = [
-      'get', 'set', 'destroy', 'length', 'clear', 'touch',
+      'get', 'set', 'destroy', 'length', 'clear', 'touch', 'all',
     ];
 
     methods.forEach((method) => {
       test(`Method ${method} should be defined`, () => expect(store[method]).toBeDefined());
       test(`Method ${method} should be a function`, () => expect(isFunc(store[method])).toBe(true));
+    });
+  });
+
+  describe('Test all method', () => {
+    test('Should return false if no callback given', () => {
+      expect(store.all()).toBe(false);
+    });
+
+    test('Should return all sessions', (done) => {
+      const sessions = mockSessions();
+      store.all((err, sess) => {
+        if (err) {
+          done(err);
+          return;
+        }
+        expect(sess.length).toBe(sessions.length);
+        done();
+      });
     });
   });
 
