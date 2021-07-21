@@ -47,4 +47,14 @@ describe('Test utils functions', () => {
       expect(utils.extractSessExpires({ cookie: { expires: 10000 } })).toBe(10000);
     });
   });
+
+  describe('Test extractSessMaxAge function', () => {
+    test('Should return def max age if no session passed', () => {
+      expect(utils.extractSessMaxAge(undefined, 100)).toBe(100);
+    });
+
+    test('Should return max age from the session cookie if session data valid', () => {
+      expect(utils.extractSessMaxAge({ cookie: { maxAge: 100 } }, 200)).toBe(100);
+    });
+  });
 });
