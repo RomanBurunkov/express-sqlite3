@@ -2,6 +2,36 @@ const { isObject } = require('tm-is');
 const utils = require('../lib/utils');
 
 describe('Test utils functions', () => {
+  describe('Test processCallback function', () => {
+    const err = 'Test processCallback error';
+    const action = (res) => res * 100;
+
+    test('Should throw an error if error passed without a callback', () => {
+      expect(() => utils.processCallback(new Error('Error!'))).toThrow();
+    });
+
+    test('Should return result if callded without callback', () => {
+      expect(utils.processCallback(null, 1)).toBe(1);
+    });
+
+    test('Should run action and return result if callded without callback', () => {
+      expect(utils.processCallback(null, 1, null, action)).toBe(100);
+    });
+
+    test('Should call a callback with an error if error given', () => {
+      utils.processCallback(err, 1, (cbErr) => {
+        expect(cbErr).toBe(err);
+      }, action);
+    });
+
+    test('Should run action and pass results to callback if there is no errors', () => {
+      utils.processCallback(null, 1, (cbErr, res) => {
+        expect(cbErr).toBeFalsy();
+        expect(res).toBe(100);
+      }, action);
+    });
+  });
+
   describe('Test buildOptions function', () => {
     test('Should return an empty object if nothing passed', () => {
       const res = utils.buildOptions();
