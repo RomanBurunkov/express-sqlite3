@@ -1,6 +1,6 @@
 {
   "name": "express-sqlite3",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "SQLite3 session store for express-session",
   "main": "lib/express-sqlite3",
   "scripts": {
@@ -30,7 +30,7 @@
     "eslint": "^7.30.0",
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-plugin-import": "^2.23.4",
-    "express-session": "^1.17.2",
+    "express-session": "^1.18.1",
     "jest": "^27.0.6"
   },
   "eslintConfig": {
@@ -61,7 +61,7 @@
     "collectCoverageFrom": ["./lib/*.js"]
   },
   "dependencies": {
-    "sqlite3": "^5.0.2",
-    "tm-is": "^0.0.3"
+    "sqlite3": "^5.1.7",
+    "tm-is": "^0.2.0"
   }
 }

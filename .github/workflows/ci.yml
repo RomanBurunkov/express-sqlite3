@@ -19,7 +19,7 @@ jobs:
     needs: lint
     strategy:
       matrix:
-        node_versions: [12, 14]
+        node_versions: [12, 14, 16, 18]
       fail-fast: false
     runs-on: ubuntu-latest
     steps:
