@@ -24,8 +24,8 @@ describe('Test SQLite3Store class', () => {
   });
 
   describe('Test all method', () => {
-    test('Should return false if no callback given', () => {
-      expect(store.all()).toBe(false);
+    test('Should return undefined if no callback given', () => {
+      expect(store.all()).toBeUndefined();
     });
 
     test('Should return all sessions', (done) => {
