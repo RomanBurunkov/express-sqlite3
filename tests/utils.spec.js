@@ -53,24 +53,28 @@ describe('Test utils functions', () => {
   });
 
   describe('Test extractSessExpires function', () => {
-    test('Should return flase if no session passed', () => {
-      expect(utils.extractSessExpires()).toBe(false);
+    test('Should return -1 if no session passed', () => {
+      expect(utils.extractSessExpires()).toBe(-1);
     });
 
-    test('Should return flase if given session is not an object', () => {
-      expect(utils.extractSessExpires('sess')).toBe(false);
+    test('Should return -1 if given session is not an object', () => {
+      expect(utils.extractSessExpires('sess')).toBe(-1);
     });
 
-    test('Should return flase if given session have no cookie element', () => {
-      expect(utils.extractSessExpires({})).toBe(false);
+    test('Should return -1 if given session have no cookie element', () => {
+      expect(utils.extractSessExpires({})).toBe(-1);
     });
 
-    test('Should return flase if given session.cookie is not an object', () => {
-      expect(utils.extractSessExpires({ cookie: 'cookie' })).toBe(false);
+    test('Should return -1 if given session.cookie is not an object', () => {
+      expect(utils.extractSessExpires({ cookie: 'cookie' })).toBe(-1);
     });
 
-    test('Should return flase if given session.cookie is empty', () => {
-      expect(utils.extractSessExpires({ cookie: {} })).toBe(false);
+    test('Should return -1 if given session.cookie is empty', () => {
+      expect(utils.extractSessExpires({ cookie: {} })).toBe(-1);
+    });
+
+    test('Should return -1 if given session.cookie is not in format which could be parsed by JS Date', () => {
+      expect(utils.extractSessExpires({ cookie: { expires: 'qwerty' } })).toBe(-1);
     });
 
     test('Should return cookie expires value in case of valid session data', () => {
